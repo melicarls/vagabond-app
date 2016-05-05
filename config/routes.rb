@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
 
+#User routes
 
   get '/users', to: 'users#index', as: 'users'
 
@@ -21,14 +22,15 @@ Rails.application.routes.draw do
 
 
 
-
-
   get '/users/:id', to: 'users#show', as: 'user'
 
 
-
+# Sessions routes for login, signup, and logout
 
   get '/login', to: 'sessions#new', as: 'new_session'
+
+
+  post '/sessions', to: 'sessions#create'
 
 
 
