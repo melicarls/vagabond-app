@@ -36,7 +36,8 @@ def show
 end
 
 def edit
-
+  @user = User.find_by_id(params[:id])
+  render :edit
 end
 
 def update
