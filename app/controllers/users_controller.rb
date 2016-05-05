@@ -35,8 +35,23 @@ def show
   render :show
 end
 
+def edit
+  @user = User.find_by_id(params[:id])
+  render :edit
+end
 
 
+# Once sessions are complete, verify current_user
+def update
+  @user = User.find_by_id(params[:id])
+  if @user.update(user_params)
+    flash[:notice] = "Successfully updated profile."
+    redirect_to user_path(@user)
+  else
+    flash[:error] = @user.errors.full_messages.join(", ")
+    redirect_to edit_user_path(@user)
+  end
+end
 
 
 
