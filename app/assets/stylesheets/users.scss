@@ -1,3 +1,14 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.jumbotron {
+  background-image: url(https://images.unsplash.com/photo-1444084316824-dc26d6657664?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=67f99c1e7d59497a92c5c5025dda3958);
+  background-size: cover;
+  background-position: center;
+  margin-top: -50px;
+  background-repeat: no-repeat;
+  color: #EEE;
+}
+.jumbotron .container {
+  height: 300px;
+}
