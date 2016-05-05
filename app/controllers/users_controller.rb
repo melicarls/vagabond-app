@@ -22,6 +22,7 @@ def create
   @user[:profile_picture] = "https://community.saltmoney.org/6.0.5.f76dfc4/images/jive-profile-default-portrait.png"
   if @user.save
     flash[:success] = "Your account has been created."
+    login(@user)
     redirect_to @user
   else
     flash[:error] = @user.errors.full_messages.join(", ")
