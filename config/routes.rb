@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 # Sessions routes for login, signup, and logout
 
-  get '/login', to: 'sessions#new', as: 'new_session'
+  get '/login', to: 'sessions#new'
 
 
   get '/logout', to: 'sessions#destroy'

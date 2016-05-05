@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash[:error] = "Incorrect username or password. Please try again."
-      redirect_to new_session_path
+      redirect_to login_path
     end
   end
 
@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
+    flash[:success] = "Successfully logged out."
     redirect_to root_path
   end
 
