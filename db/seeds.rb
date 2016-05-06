@@ -20,3 +20,19 @@ end
 
 u = User.create(user_data) # array of all created users
 puts "Seeded #{u.count} Users"
+
+puts "-----------"
+
+Post.destroy_all
+
+first = User.first
+
+the_post = Post.create ({
+   title: FFaker::CheesyLingo.title,
+   content: FFaker::CheesyLingo.paragraph
+})
+
+first.posts.push(the_post)
+
+
+puts "first user has post"
