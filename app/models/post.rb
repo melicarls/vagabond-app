@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 
   belongs_to :user
+  belongs_to :city, through: :cities_posts
 
   validates :title,
             presence: true,
