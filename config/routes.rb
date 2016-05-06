@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/cities/', to: 'cities#create'
   get '/cities/edit', to: 'cities#edit', as: 'edit_city'
   patch '/cities/:id', to: 'cities#update'
-  delete '/cities/:id', to: 'cities#destroy' 
+  delete '/cities/:id', to: 'cities#destroy' # Needs controller action, might need dependent destroy
 
 
   # Posts routes
