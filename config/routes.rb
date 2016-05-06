@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root to: 'users#index'
+  root to: 'cities#index'
 
 #User routes
 
@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   post '/sessions', to: 'sessions#create'
 
-# Post routes
-
+# # Post routes
+#
   get '/users/:user_id/posts', to: 'posts#index', as: 'user_posts'
   get '/users/:user_id/posts/new', to: 'posts#new', as: 'new_user_post'
   get '/users/:user_id/posts/:id', to: 'posts#show', as: 'user_post'
@@ -34,8 +34,10 @@ Rails.application.routes.draw do
 
 # Cities_posts routes
 
-resources :cities do
-  resources :posts
-end
+  get "/cities/:city_id/posts", to: 'posts#index', as: 'city_posts'
+
+  resources :cities do
+    resources :posts
+  end
 
 end
