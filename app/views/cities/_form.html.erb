@@ -1,0 +1,5 @@
+<%= form_for @city do |f| %>
+  <%= f.text_field :name, placeholder: "City Name", required: true %> <br />
+  <%= f.text_field :photo, placeholder: "Image URL", required: true %> <br />
+  <%= f.submit "Submit" %>
+<% end %>
