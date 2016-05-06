@@ -1,0 +1,7 @@
+<h1> <%= @city.name %> </h1>
+<% @city.posts.each do |post| %>
+  <h3> <%= post.title %> </h3>
+  <p>
+    <%= post.content %>
+  </p>
+<% end %>
