@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
   #Route to deactivate account
-
+  get '/users/:id/changestatus', to: 'users#toggle', as: 'toggle_active_user'
 
 # Sessions routes for login, signup, and logout
   get '/login', to: 'sessions#new'
