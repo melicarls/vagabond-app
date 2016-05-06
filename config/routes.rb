@@ -27,9 +27,15 @@ Rails.application.routes.draw do
 
 # Cities route
   get '/cities/', to: 'cities#index', as: 'cities'
+  get '/cities/new', to: 'cities#new', as: 'new_city'
+  post '/cities/', to: 'cities#create'
+  get '/cities/edit', to: 'cities#edit', as: 'edit_city'
+  patch '/cities/:id', to: 'cities#update'
 
 # Cities_posts routes
 
-
+resources :cities do
+  resources :posts
+end
 
 end
