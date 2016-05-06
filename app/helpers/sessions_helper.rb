@@ -25,6 +25,13 @@ module SessionsHelper
     @current_user = session[:user_id] = nil
   end
 
+  def check_active
+    if !current_user[:active]
+      flash[:error] = "Your account must be ACTIVE to view this page"
+      redirect_to edit_user_path
+    end
+  end
+
 
 
 
