@@ -54,6 +54,16 @@ def update
   end
 end
 
+def toggle
+  @user = User.find_by_id(params[:id])
+  if @user.update({ active: !@user[:active] })
+    flash[:notice] = "Your account status has been changed"
+    redirect_to user_path(@user)
+  else
+    flash[:error] = @user.errors.full_messages.join(", ")
+    redirect_to edit_user_path(@user)
+  end
+end
 
 
 
@@ -62,7 +72,7 @@ private
 
 
 def user_params
-  params.require(:user).permit(:first_name, :last_name, :email, :password, :current_city, :username)
+  params.require(:user).permit(:first_name, :last_name, :email, :password, :current_city, :username, :active)
 end
 
 
