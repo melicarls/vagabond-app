@@ -41,7 +41,18 @@ class PostsController < ApplicationController
   end
 
   def update
-
+    city = City.find(params[:city_id])
+    post_id = params[:id]
+    post = Post.find_by(id: post_id)
+    user_id = current_user[:id]
+    post[:user_id] = user_id
+    if post.update(post_params)
+      flash[:notice] = "Post successfully updated!"
+      redirect_to city_path(city)
+    else
+      flash[:error] = post.errors.full_messages.join(", ")
+      redirect_to edit_post_path
+    end
   end
 
   def destroy

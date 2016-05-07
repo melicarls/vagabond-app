@@ -1,8 +1,9 @@
 <h1> <%= @city.name %> </h1>
+<%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary' %>
 <% @city.posts.each do |post| %>
   <h3> <%= post.title %> </h3>
   <p>
     <%= post.content %>
   </p>
-  <%= button_to "Edit", edit_post_path(post[:city_id], post[:id]), :method => :get, :class => 'btn btn-info' %>
+  <%= button_to "Edit", edit_city_post_path(@city[:id], post[:id]), :method => :get, :class => 'btn btn-info' %>
 <% end %>
