@@ -4,4 +4,5 @@
   <p>
     <%= post.content %>
   </p>
+  <%= button_to "Edit", edit_post_path(post[:city_id], post[:id]), :method => :get, :class => 'btn btn-info' %>
 <% end %>

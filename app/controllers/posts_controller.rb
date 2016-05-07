@@ -32,6 +32,22 @@ class PostsController < ApplicationController
     @city = City.find_by(id: city_id)
   end
 
+  def edit
+    post_id = params[:id]
+    @post = Post.find_by(id: post_id)
+    city_id = params[:city_id]
+    @city = City.find_by(id: city_id)
+    render :edit
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+
   private
 
   def post_params
