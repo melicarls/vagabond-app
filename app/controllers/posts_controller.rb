@@ -56,9 +56,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    post_id = params[:id]
+    post = Post.find_by(id: post_id)
+    post.destroy
 
+    city_id = params[:city_id]
+    city = City.find_by(id: city_id)
+    redirect_to city_path(city)
   end
-
+  
   private
 
   def post_params
