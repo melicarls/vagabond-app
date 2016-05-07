@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 
 # Cities routes
   get '/cities/', to: 'cities#index', as: 'cities'
-  get '/cities/:id', to: 'cities#show', as: 'city' # Needs controller action
   get '/cities/new', to: 'cities#new', as: 'new_city'
+  get '/cities/:id', to: 'cities#show', as: 'city' # Needs controller action
   post '/cities/', to: 'cities#create'
   get '/cities/edit', to: 'cities#edit', as: 'edit_city'
   patch '/cities/:id', to: 'cities#update'
