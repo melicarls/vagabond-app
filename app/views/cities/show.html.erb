@@ -4,14 +4,14 @@
 <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right' %>
 <img src="<%= @city.photo %>"/>
 
-<% @city.posts.each do |post| %>
-  <h3> <%= link_to post.title, city_post_path({id: post.id, city_id: @city[:id]}) %> </h3>
+<% @city.posts.each do |p| %>
+  <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
   <p>
-    <%= post.content %>
+    <%= p.content %>
   </p>
-  <%= button_to "Edit", edit_city_post_path(@city[:id], post[:id]), :method => :get, :class => 'btn btn-info' %>
+  <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info' %>
 
-  <%= button_to "Delete", root_path, :class => 'btn btn-danger pull-right'  %>
+  <%= button_to "Delete", "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => 'btn btn-danger' %>
 <br/>
 <hr/>
 
