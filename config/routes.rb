@@ -28,9 +28,10 @@ Rails.application.routes.draw do
 
 
   # Posts routes
-  get '/cities/:city_id/posts/:id', to: 'posts#show', as: 'post' # Needs controller action
+  get '/cities/:city_id/posts', to: "posts#index", as: 'posts'
   get '/cities/:city_id/posts/new', to: 'posts#new', as: 'new_post' # Needs controller action
   post '/cities/:city_id/posts', to: 'posts#create' # Needs controller action
+  get '/cities/:city_id/posts/:id', to: 'posts#show', as: 'post' # Needs controller action
   get '/cities/:city_id/posts/:id/edit', to: 'posts#edit', as: 'edit_post' # Needs controller action
   patch '/cities/:city_id/posts/:id', to: 'posts#update' # Needs controller action
   delete '/cities/:city_id/posts/:id', to: 'posts#destroy' # Needs controller action
