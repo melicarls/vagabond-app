@@ -7,7 +7,8 @@
 }
 
 .jumbotron {
-  background-image: image-url('jumbotron.jpeg');
+
+  background: url('./app/assets/images/jumbotron.jpeg');
   background-size: cover;
   background-position: center;
   margin-top: -50px;

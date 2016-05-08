@@ -7,8 +7,8 @@
 <div class="row">
   <% @cities.each do |city| %>
     <div class="col-sm-4">
-      <h3> <%= link_to city.name, city_path(city) %> </h3>
-      <%= image_tag("#{city.photo}}", width: "300px") %>
+      <h3> <%= link_to city.name, city_path(city), id: 'city' %> </h3>
+      <%= image_tag("#{city.photo}", width: "300px") %>
     </div>
   <% end %>
   <br/>

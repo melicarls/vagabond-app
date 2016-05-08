@@ -15,7 +15,10 @@ class CitiesController < ApplicationController
   def show
     return if inactive_redirect
     @city = City.find_by_id(params[:id])
+
+    # header image
     @city_image = "#{@city.photo}"
+
     posts = Post.all
     @active_user_posts = []
     posts.each do |post|
