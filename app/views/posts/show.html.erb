@@ -9,5 +9,3 @@
   <%= button_to "Edit", edit_city_post_path(@post[:city_id], @post[:id]), :method => :get, :class => 'btn btn-info pull-right' %>
   <%= button_to "Delete", root_path, :class => 'btn btn-danger pull-right'  %>
 <% end %>
-
-<%= button_to "Back", city_path(@post.city), :method => :get, :class => 'btn btn-primary pull-right' %>
