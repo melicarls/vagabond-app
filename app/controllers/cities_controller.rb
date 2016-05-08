@@ -3,6 +3,11 @@ class CitiesController < ApplicationController
   def index
     return if inactive_redirect
     @cities = City.all
+    if params[:search]
+      @cities = City.search(params[:search])
+    else
+      @cities = City.all
+    end
     render :index
   end
 
