@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'cities#index'
 
 # User routes
-  get '/users', to: 'users#index', as: 'users'
+
   get '/users/new', to: 'users#new', as: 'new_user'
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :cities do
     resources :posts
   end
+
+  get '*path', to: 'cities#index'
+
 #   city_posts GET    /cities/:city_id/posts(.:format)          posts#index
 #              POST   /cities/:city_id/posts(.:format)          posts#create
 # new_city_post GET    /cities/:city_id/posts/new(.:format)      posts#new
