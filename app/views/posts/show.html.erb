@@ -2,8 +2,8 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
 <img src=" <%= @post.user.profile_picture%>"/>
-<p> <strong>Written By:</strong> <%= link_to @post.user.username, user_path(@post.user) %></p>
-<p> <strong>Posted At:</strong> <%= @post.created_at.strftime("%m/%d/%Y") %></p>
+<p> <strong>Written by:</strong> <%= link_to @post.user.username, user_path(@post.user) %></p>
+<p> <strong>Posted at:</strong> <%= @post.created_at.strftime("%m/%d/%Y") %></p>
 
 <% if current_user && current_user[:id] == @post[:user_id] %>
   <%= button_to "Edit", edit_city_post_path(@post[:city_id], @post[:id]), :method => :get, :class => 'btn btn-info pull-right' %>
