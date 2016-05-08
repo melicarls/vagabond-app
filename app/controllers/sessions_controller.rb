@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       login(@user)
-      if !active?
+      if !@user[:active]
         flash[:success] = "You can reactivate your account by clicking the green button."
         redirect_to edit_user_path(@current_user)
       else

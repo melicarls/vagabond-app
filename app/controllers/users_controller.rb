@@ -53,10 +53,10 @@ end
 def toggle
   @user = User.find_by_id(params[:id])
   if @user.update({ active: !@user[:active] })
-    if active?
+    if @user[:active]
       flash[:notice] = "Welcome back! Your account has been reactivated. "
       redirect_to user_path(@user)
-    else !active?
+    else !@user[:active]
       flash[:notice] = "Your account has been deactivated and you have been logged out."
       logout
       redirect_to cities_path
