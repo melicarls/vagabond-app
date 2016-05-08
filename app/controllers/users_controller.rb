@@ -24,49 +24,28 @@ end
 
 def show
   @user = User.find_by_id(params[:id])
-  # render :show
-  if session[:user_id] != @user[:id]
-    flash[:notice] = "You may only view your own profile page."
-    redirect_to login_path
-  else
-    render :show
-  end
+  render :show
 
 end
-
-# def edit
-#   return if inactive_redirect
-#   post_id = params[:id]
-#   @post = Post.find_by(id: post_id)
-#   city_id = params[:city_id]
-#   @city = City.find_by(id: city_id)
-#   if session[:user_id] != @post.user_id
-#     redirect_to login_path
-#   end
-# end
-
-
-
-# def show
-#   return if inactive_redirect
-#   post_id = params[:id]
-#   @post = Post.find_by(id: post_id)
-#   city_id = params[:city_id]
-#   @city = City.find_by(id: city_id)
-# end
 
 
 
 def edit
   @user = User.find_by_id(params[:id])
-  render :edit
+  if session[:user_id] != @user[:id]
+    flash[:notice] = "You may not edit another user's profile."
+    render :show
+  else
+    render :edit
+  end
 end
 
 
 # Once sessions are complete, verify current_user
 def update
   @user = User.find_by_id(params[:id])
-  if @user.update(user_params)
+  if session[:user_id] == @user[:id]
+    @user.update(user_params)
     flash[:notice] = "Successfully updated profile."
     redirect_to user_path(@user)
   else
