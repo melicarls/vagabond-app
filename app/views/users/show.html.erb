@@ -20,7 +20,7 @@
 
   <% @user.posts.each do |post| %>
 
-  <h1>  <%= link_to post.title, city_path(post[:city_id]) %></h1>
+  <h1>  <%= link_to post.title, city_post_path(post[:city_id], post[:id]) %></h1>
   <p>
     <%= post.content %>
   </p>
