@@ -1,7 +1,7 @@
 <%= render 'form' %>
 
 <% if current_user.active %>
-  <%= button_to 'Deactivate Account', toggle_active_user_path, :method => :get, :class => 'btn btn-danger' %>
+  <%= button_to 'Deactivate Account', toggle_active_user_path, :method => :get, :class => 'btn btn-danger pull-right' %>
 <% else %>
-  <%= button_to 'Activate Account', toggle_active_user_path, :method => :get, :class => 'btn btn-success' %>
+  <%= button_to 'Activate Account', toggle_active_user_path, :method => :get, :class => 'btn btn-success pull-right' %>
 <% end %>

@@ -1,5 +1,9 @@
 <!-- app/views/user/show.html.erb -->
-<div class="col-sm-4">
+<% if !@user.active %>
+<h4>Your account is inactive.</h4>
+<% end %>
+
+<div class="col-md-4">
 
   <%= image_tag("#{@user.profile_picture}", alt: "Profile Picture") %>
   <h3><%= @user.username %></h3>
@@ -10,7 +14,7 @@
 
 </div>
 
-<div class="col-sm-7 col-sm-offset-1">
+<div class="col-md-6 col-md-offset-2">
 
   <% @user.posts.each do |post| %>
 

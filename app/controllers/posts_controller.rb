@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    return if inactive_redirect
     @post = Post.new
     city_id = params[:city_id]
     @city = City.find_by(id: city_id)
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    return if inactive_redirect
     city = City.find(params[:city_id])
     new_post = Post.new(post_params)
     user_id = current_user[:id]
@@ -28,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    return if inactive_redirect
     post_id = params[:id]
     @post = Post.find_by(id: post_id)
     city_id = params[:city_id]
@@ -35,6 +38,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    return if inactive_redirect
     post_id = params[:id]
     @post = Post.find_by(id: post_id)
     city_id = params[:city_id]
@@ -45,6 +49,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    return if inactive_redirect
     city = City.find(params[:city_id])
     post_id = params[:id]
     @post = Post.find_by(id: post_id)
@@ -61,12 +66,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    return if inactive_redirect
     post_id = params[:id]
-    @post = Post.find_by(id: post_id)
+    post = Post.find_by(id: post_id)
 
 
-    if session[:user_id] = @post.user_id
-      @post.destroy
+    if session[:user_id] = post.user_id
+      post.destroy
       city_id = params[:city_id]
       city = City.find_by(id: city_id)
       redirect_to city_path(city)

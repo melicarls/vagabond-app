@@ -12,8 +12,13 @@ class SessionsController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       login(@user)
-      flash[:success] = "Successfully logged in!"
-      redirect_to @user
+      if !@user[:active]
+        flash[:success] = "You can reactivate your account by clicking the green button."
+        redirect_to edit_user_path(@current_user)
+      else
+        flash[:success] = "Successfully logged in!"
+        redirect_to @user
+      end
     else
       flash[:error] = "Incorrect username or password. Please try again."
       redirect_to login_path

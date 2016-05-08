@@ -1,21 +1,25 @@
 class CitiesController < ApplicationController
 
   def index
+    return if inactive_redirect
     @cities = City.all
     render :index
   end
 
   def new
+    return if inactive_redirect
     @city = City.new
     render :new
   end
 
   def show
+    return if inactive_redirect
     @city = City.find_by_id(params[:id])
   end
 
 
   def create
+    return if inactive_redirect
     @city = City.new(city_params)
     if @city.save
       flash[:success] = "Created new city."
@@ -30,12 +34,14 @@ class CitiesController < ApplicationController
 
 # Restrict to Admin account
   def edit
+    return if inactive_redirect
     @city = City.find_by_id(params[:id])
     render :edit
   end
 
 
   def update
+    return if inactive_redirect
     @city = City.find_by_id(params[:id])
     if @city.update(city_params)
       flash[:success] = "Successfully updated city."
