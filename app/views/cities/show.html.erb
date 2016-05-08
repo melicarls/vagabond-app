@@ -30,6 +30,9 @@
               </div>
               <div class="col-sm-6">
                 <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
+                <h4>
+                  <%= truncate(p.content, length:1000) {link_to "View More", city_post_path({id: p.id, city_id: @city[:id]})} %>
+                </h4>
                 <p> <%= p.content %> </p>
               </div>
 
