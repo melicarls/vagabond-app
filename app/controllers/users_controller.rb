@@ -25,18 +25,27 @@ end
 def show
   @user = User.find_by_id(params[:id])
   render :show
+
 end
+
+
 
 def edit
   @user = User.find_by_id(params[:id])
-  render :edit
+  if session[:user_id] != @user[:id]
+    flash[:notice] = "You may not edit another user's profile."
+    render :show
+  else
+    render :edit
+  end
 end
 
 
 # Once sessions are complete, verify current_user
 def update
   @user = User.find_by_id(params[:id])
-  if @user.update(user_params)
+  if session[:user_id] == @user[:id]
+    @user.update(user_params)
     flash[:notice] = "Successfully updated profile."
     redirect_to user_path(@user)
   else
@@ -74,3 +83,50 @@ end
 
 
 end
+
+
+
+ ##############################
+ # EXAMPLE
+ ##############################
+
+
+
+
+  # def update
+  #   return if inactive_redirect
+  #   city = City.find(params[:city_id])
+  #   post_id = params[:id]
+  #   @post = Post.find_by(id: post_id)
+  #   user_id = current_user[:id]
+  #   @post[:user_id] = user_id
+  #   if session[:user_id] == @post.user_id
+  #     @post.update(post_params)
+  #     flash[:notice] = "Post successfully updated!"
+  #     redirect_to city_path(city)
+  #   else
+  #     flash[:error] = @post.errors.full_messages.join(", ")
+  #     redirect_to edit_post_path
+  #   end
+  # end
+  #
+  # def destroy
+  #   return if inactive_redirect
+  #   post_id = params[:id]
+  #   post = Post.find_by(id: post_id)
+  #
+  #
+  #   if session[:user_id] == post.user_id
+  #     post.destroy
+  #     city_id = params[:city_id]
+  #     city = City.find_by(id: city_id)
+  #     redirect_to city_path(city)
+  #   else
+  #     flash[:notice] = "You may only delete your own posts."
+  #     redirect_to login_path
+  #   end
+  # end
+
+#####################
+# END
+####################
