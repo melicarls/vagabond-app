@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :logged_in?, only: [:new, :create]
+  before_action :logged_in?, except: [:index, :show]
+  # before_action :authorize, except: [:index, :show]
 
 
   def index
@@ -40,7 +41,9 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: post_id)
     city_id = params[:city_id]
     @city = City.find_by(id: city_id)
-    render :edit
+    if session[:user_id] != @post.user_id
+      redirect_to login_path
+    end
   end
 
   def update
