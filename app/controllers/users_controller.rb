@@ -6,12 +6,10 @@ def index
 end
 
 
-
 def new
   @user = User.new
   render :new
 end
-
 
 
 def create
@@ -61,6 +59,7 @@ def toggle
       redirect_to cities_path
     else
       flash[:notice] = "Your account has been reactivated"
+      login(@user)
       redirect_to user_path(@user)
     end
   else
