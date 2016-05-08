@@ -5,66 +5,95 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
-    city_id = params[:city_id]
-    @city = City.find_by(id: city_id)
-    render :new
+    if !active?
+      flash[:notification] = "Please reactivate your account to continue"
+      redirect_to edit_user_path(@current_user)
+    else
+      @post = Post.new
+      city_id = params[:city_id]
+      @city = City.find_by(id: city_id)
+      render :new
+    end
   end
 
   def create
-    city = City.find(params[:city_id])
-    new_post = Post.new(post_params)
-    user_id = current_user[:id]
-    new_post[:user_id] = user_id
-    if new_post.save
-      city.posts << new_post
-      redirect_to city_path(city)
+    if !active?
+      flash[:notification] = "Please reactivate your account to continue"
+      redirect_to edit_user_path(@current_user)
     else
-      flash[:error] = new_post.errors.full_messages.join(", ")
-      redirect_to new_user_post_path(user)
+      city = City.find(params[:city_id])
+      new_post = Post.new(post_params)
+      user_id = current_user[:id]
+      new_post[:user_id] = user_id
+      if new_post.save
+        city.posts << new_post
+        redirect_to city_path(city)
+      else
+        flash[:error] = new_post.errors.full_messages.join(", ")
+        redirect_to new_user_post_path(user)
+      end
     end
   end
 
   def show
-    post_id = params[:id]
-    @post = Post.find_by(id: post_id)
-    city_id = params[:city_id]
-    @city = City.find_by(id: city_id)
+    if !active?
+      flash[:notification] = "Please reactivate your account to continue"
+      redirect_to edit_user_path(@current_user)
+    else
+      post_id = params[:id]
+      @post = Post.find_by(id: post_id)
+      city_id = params[:city_id]
+      @city = City.find_by(id: city_id)
+    end
   end
 
   def edit
-    post_id = params[:id]
-    @post = Post.find_by(id: post_id)
-    city_id = params[:city_id]
-    @city = City.find_by(id: city_id)
-    render :edit
+    if !active?
+      flash[:notification] = "Please reactivate your account to continue"
+      redirect_to edit_user_path(@current_user)
+    else
+      post_id = params[:id]
+      @post = Post.find_by(id: post_id)
+      city_id = params[:city_id]
+      @city = City.find_by(id: city_id)
+      render :edit
+    end
   end
 
   def update
-    city = City.find(params[:city_id])
-    post_id = params[:id]
-    post = Post.find_by(id: post_id)
-    user_id = current_user[:id]
-    post[:user_id] = user_id
-    if post.update(post_params)
-      flash[:notice] = "Post successfully updated!"
-      redirect_to city_path(city)
+    if !active?
+      flash[:notification] = "Please reactivate your account to continue"
+      redirect_to edit_user_path(@current_user)
     else
-      flash[:error] = post.errors.full_messages.join(", ")
-      redirect_to edit_post_path
+      city = City.find(params[:city_id])
+      post_id = params[:id]
+      post = Post.find_by(id: post_id)
+      user_id = current_user[:id]
+      post[:user_id] = user_id
+      if post.update(post_params)
+        flash[:notice] = "Post successfully updated!"
+        redirect_to city_path(city)
+      else
+        flash[:error] = post.errors.full_messages.join(", ")
+        redirect_to edit_post_path
+      end
     end
   end
 
   def destroy
-    post_id = params[:id]
-    post = Post.find_by(id: post_id)
-    post.destroy
-
-    city_id = params[:city_id]
-    city = City.find_by(id: city_id)
-    redirect_to city_path(city)
+    if !active?
+      flash[:notification] = "Please reactivate your account to continue"
+      redirect_to edit_user_path(@current_user)
+    else
+      post_id = params[:id]
+      post = Post.find_by(id: post_id)
+      post.destroy
+      city_id = params[:city_id]
+      city = City.find_by(id: city_id)
+      redirect_to city_path(city)
+    end
   end
-  
+
   private
 
   def post_params

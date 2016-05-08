@@ -7,12 +7,10 @@ end
 
 
 
-
 def new
   @user = User.new
   render :new
 end
-
 
 
 
@@ -57,8 +55,14 @@ end
 def toggle
   @user = User.find_by_id(params[:id])
   if @user.update({ active: !@user[:active] })
-    flash[:notice] = "Your account status has been changed"
-    redirect_to user_path(@user)
+    if !@user[:active]
+      logout
+      flash[:notice] = "Your account has been deactivated"
+      redirect_to cities_path
+    else
+      flash[:notice] = "Your account has been reactivated"
+      redirect_to user_path(@user)
+    end
   else
     flash[:error] = @user.errors.full_messages.join(", ")
     redirect_to edit_user_path(@user)
