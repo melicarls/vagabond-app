@@ -26,7 +26,7 @@ module SessionsHelper
   end
 
   def inactive_redirect
-    p "Active status", !current_user[:active]
+    return if !current_user
     if !current_user[:active]
       redirect_to edit_user_path(@current_user)
     end
