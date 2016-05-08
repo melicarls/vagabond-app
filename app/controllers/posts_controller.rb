@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  before_action :logged_in?, only: [:new, :create]
+
+
   def index
 
   end
@@ -64,7 +67,7 @@ class PostsController < ApplicationController
     city = City.find_by(id: city_id)
     redirect_to city_path(city)
   end
-  
+
   private
 
   def post_params
