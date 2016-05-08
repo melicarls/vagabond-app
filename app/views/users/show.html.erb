@@ -18,10 +18,12 @@
 
   <% @user.posts.each do |post| %>
 
-  <h1>  <%= post.title %></h1>
+  <h1>  <%= link_to post.title %></h1>
   <p>
     <%= post.content %>
   </p>
 
   <% end %>
 </div>
+
+<!-- link_to c.name, creature_path(c.id) -->
