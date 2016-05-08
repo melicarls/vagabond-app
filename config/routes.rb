@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :cities do
     resources :posts
   end
+
+  get '*path', to: 'cities#index'
+
 #   city_posts GET    /cities/:city_id/posts(.:format)          posts#index
 #              POST   /cities/:city_id/posts(.:format)          posts#create
 # new_city_post GET    /cities/:city_id/posts/new(.:format)      posts#new
