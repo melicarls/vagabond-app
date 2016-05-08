@@ -34,5 +34,4 @@ the_post = Post.create ({
 
 first.posts.push(the_post)
 
-
 puts "first user has post"
