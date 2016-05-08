@@ -4,15 +4,18 @@
 </div>
 
 <div class="col-sm-8">
-  <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right button' %>
+  <% if current_user && current_user[:active] %>
+    <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right button' %>
+  <% end %>
   <%= button_to "All Cities", cities_path, :method => :get, :class => 'btn btn-primary pull-right button' %>
   <% @city.posts.each do |p| %>
     <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
     <p>
       <%= p.content %>
     </p>
-    <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info' %>
-
-    <%= button_to "Delete", "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => 'btn btn-danger' %>
+    <% if current_user && current_user[:id] == p[:user_id] %>
+      <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info' %>
+      <%= button_to "Delete", "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => 'btn btn-danger' %>
+    <% end %>
   <% end %>
 </div>
