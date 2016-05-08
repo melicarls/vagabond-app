@@ -36,18 +36,9 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="jumbotron">
-  <div class="container">
-      <h1>Vagabond</h1>
-  </div>
-</div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <%= yield %>
-      </div>
 
-    </div>
+    <%= yield %>
+
 
     <% flash.each do |name, msg| %>
     <p>
@@ -55,6 +46,5 @@
     </p>
     <% end %>
 
-  </div>
 </body>
 </html>
