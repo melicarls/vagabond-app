@@ -77,10 +77,7 @@ class CitiesController < ApplicationController
 
 
   def destroy
-    if @current_user[:username] != "admin"
-      redirect_to cities_path
-      flash[:error] = "You're not authorized to delete a city."
-    else
+    if current_user && current_user.username == "admin"
       @city = City.find_by_id(params[:id])
       if @city.destroy
         flash[:success] = "The city has been deleted."
@@ -89,6 +86,9 @@ class CitiesController < ApplicationController
         flash[:error] = @city.errors.full_messages.join(", ")
         redirect_to edit_city_path(@city)
       end
+    else !@current_user || @current_user[:username] != "admin"
+      redirect_to cities_path
+      flash[:error] = "You're not authorized to delete a city."
     end
   end
 
