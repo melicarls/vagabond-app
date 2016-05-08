@@ -1,9 +1,15 @@
-<h1>Cities</h1>
-<% @cities.each do |city| %>
-  <div class="col-sm-4">
-    <h3> <%= link_to city.name, city_path(city) %> </h3>
-    <img src="<%= city.photo %>"/>
+<div class="row">
+  <div class="col-sm-12">
+    <%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info pull-right button' %>
   </div>
-<% end %>
-<br/>
-<%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info' %>
+</div>
+
+<div class="row">
+  <% @cities.each do |city| %>
+    <div class="col-sm-4">
+      <h3> <%= link_to city.name, city_path(city) %> </h3>
+      <%= image_tag("#{city.photo}}", width: "300px") %>
+    </div>
+  <% end %>
+  <br/>
+</div>
