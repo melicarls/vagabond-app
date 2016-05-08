@@ -18,6 +18,7 @@ user_data = []
   }
 end
 
+
 u = User.create(user_data) # array of all created users
 puts "Seeded #{u.count} Users"
 
