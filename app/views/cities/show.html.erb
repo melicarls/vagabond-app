@@ -11,7 +11,7 @@
 <% @city.posts.order(created_at: :desc).each do |p| %>
   <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
   <h4>
-    <%= p.content %>
+    <%= truncate(p.content, length:1000) {link_to "View More", city_post_path({id: p.id, city_id: @city[:id]})} %>
   </h4>
   <p>
     By <%= link_to p.user.username, user_path(p.user) %> on <%= p.created_at.strftime("%m/%d/%Y") %>
