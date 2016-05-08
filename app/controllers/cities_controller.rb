@@ -45,8 +45,6 @@ class CitiesController < ApplicationController
   end
 
 
-
-# Restrict to Admin account
   def edit
     return if inactive_redirect
     if @current_user[:username] != "admin"
@@ -87,7 +85,7 @@ class CitiesController < ApplicationController
         flash[:error] = @city.errors.full_messages.join(", ")
         redirect_to edit_city_path(@city)
       end
-    else 
+    else
       redirect_to cities_path
       flash[:error] = "You're not authorized to delete a city."
     end
