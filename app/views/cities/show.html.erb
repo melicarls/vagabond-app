@@ -10,13 +10,16 @@
 
 
 <div class="row">
-  <% @city.posts.each do |p| %>
+  <% @city.posts.order(created_at: :desc)each do |p| %>
     <div class="col-sm-8">
       <div class="thumbnail">
         <%= image_tag("#{p.user.profile_picture}", width: "200px") %>
         <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
         <p>
           <%= p.content %>
+        </p>
+        <p>
+          By <%= link_to p.user.username, user_path(p.user) %> on <%= p.created_at.strftime("%m/%d/%Y") %>
         </p>
         <% if current_user && current_user[:id] == p[:user_id] %>
           <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info' %>
