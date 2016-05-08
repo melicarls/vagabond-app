@@ -15,6 +15,14 @@ class CitiesController < ApplicationController
   def show
     return if inactive_redirect
     @city = City.find_by_id(params[:id])
+    posts = Post.all
+    @active_user_posts = []
+    posts.each do |post|
+      if post.user[:active]
+        @active_user_posts << post
+      end
+    end
+    @active_user_posts.sort_by{|e| e[:created_at]}
   end
 
 
