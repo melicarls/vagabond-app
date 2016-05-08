@@ -1,6 +1,7 @@
 <!-- app/views/user/show.html.erb -->
+
 <% if !@user.active %>
-<h4>Your account is inactive.</h4>
+<h4>This account is inactive.</h4>
 <% end %>
 
 <div class="col-md-4">
@@ -10,8 +11,9 @@
   <h4>Date joined: <%= @user.created_at %> </h4>
   <h4> <%= @user.current_city %> </h4>
 
-  <%= button_to "Edit Profile", edit_user_path, :method => :get, :class => 'btn btn-info' %>
-
+  <% if current_user && current_user[:id] == @user[:id] %>
+    <%= button_to "Edit Profile", edit_user_path, :method => :get, :class => 'btn btn-info' %>
+  <% end %>
 </div>
 
 <div class="col-md-6 col-md-offset-2">
