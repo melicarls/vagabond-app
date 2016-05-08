@@ -1,10 +1,13 @@
 
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
-<p> <strong>Written By:</strong> <%= @post.user.username %></p>
+<img src=" <%= @post.user.profile_picture%>"/>
+<p> <strong>Written By:</strong> <%= link_to @post.user.username, user_path(@post.user) %></p>
 <p> <strong>Posted At:</strong> <%= @post.created_at.strftime("%m/%d/%Y") %></p>
 
-<%= button_to "Edit", edit_city_post_path(@post[:city_id], @post[:id]), :method => :get, :class => 'btn btn-info pull-right' %>
-<%= button_to "Delete", root_path, :class => 'btn btn-danger pull-right'  %>
+<% if current_user && current_user[:id] == @post[:user_id] %>
+  <%= button_to "Edit", edit_city_post_path(@post[:city_id], @post[:id]), :method => :get, :class => 'btn btn-info pull-right' %>
+  <%= button_to "Delete", root_path, :class => 'btn btn-danger pull-right'  %>
+<% end %>
 
 <%= button_to "Back", city_path(@post.city), :method => :get, :class => 'btn btn-primary pull-right' %>
