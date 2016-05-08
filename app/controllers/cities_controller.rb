@@ -21,6 +21,7 @@ class CitiesController < ApplicationController
     return if inactive_redirect
     @city = City.find_by_id(params[:id])
     posts = Post.all
+    posts = posts.select{ |post| post[:city_id] == @city[:id]}
     @active_user_posts = []
     posts.each do |post|
       if post.user[:active]
