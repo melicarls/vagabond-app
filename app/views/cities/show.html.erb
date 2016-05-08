@@ -1,5 +1,10 @@
 <%= button_to "Back", cities_path, :method => :get, :class => 'btn btn-primary pull-right' %>
 
+<% if current_user && current_user[:username] == "admin" %>
+  <%= button_to "Edit City", edit_city_path(@city[:id]), :method => :get, :class => 'btn btn-info' %>
+  <%= button_to "Delete City", "/cities/#{@city.id}/", method: :delete, :class => 'btn btn-danger' %>
+<% end %>
+
 <h1> <%= @city.name %> </h1>
 <% if current_user && current_user[:active] %>
   <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right' %>
@@ -18,6 +23,7 @@
   <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info' %>
   <%= button_to "Delete", "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => 'btn btn-danger' %>
   <% end %>
+
 
   <br/>
   <hr/>

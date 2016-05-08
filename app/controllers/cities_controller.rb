@@ -61,6 +61,17 @@ class CitiesController < ApplicationController
   end
 
 
+  def destroy
+    @city = City.find_by_id(params[:id])
+    if @city.destroy
+      flash[:success] = "The city has been deleted."
+      redirect_to cities_path
+    else
+      flash[:error] = @city.errors.full_messages.join(", ")
+      redirect_to edit_city_path(@city)
+    end
+  end
+
 
 
   private

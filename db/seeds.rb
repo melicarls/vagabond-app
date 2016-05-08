@@ -18,7 +18,6 @@ user_data = []
   }
 end
 
-
 u = User.create(user_data) # array of all created users
 puts "Seeded #{u.count} Users"
 
@@ -36,3 +35,22 @@ the_post = Post.create ({
 first.posts.push(the_post)
 
 puts "first user has post"
+
+User.create({
+  first_name: "admin",
+  last_name: "admin",
+  current_city: "admin",
+  email: "admin@vagabond.com",
+  username: "admin",
+  password: "admin",
+  active: true,
+  profile_picture: "http://www.clipartbest.com/cliparts/9cR/Rj9/9cRRj9Aoi.svg"
+})
+
+City.create({name: "San Francisco", photo:"https://images.unsplash.com/photo-1423347673683-ccdb7f6a948f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f6afff6e20e207bbe89356e92770c86a"})
+City.create({name: "Gibraltar", photo:"http://static.guim.co.uk/sys-images/Football/Clubs/Club_Home/2013/11/19/1384870207734/Gibraltar-will-play-their-014.jpg"})
+City.create({name: "London", photo:"https://images.unsplash.com/photo-1428342628092-61f9e5d578f2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1d95bbe1b676b1e8535139bb4ce735d8"})
+City.create({name: "Chicago", photo:"https://images.unsplash.com/photo-1462121594302-c1ed6b9ab32d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c07c1848e33625c3021f01eed2bc6b1c"})
+City.create({name: "New York", photo:"https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d"})
+City.create({name: "Los Angeles", photo:"https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=267ac8364bdee3c7020b8c4da3596b07"})
+City.create({name: "Boston", photo:"https://images.unsplash.com/photo-1461253205884-5aa82520ee48?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=67113380cad241527e09b4f41dcade55"})

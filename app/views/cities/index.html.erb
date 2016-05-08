@@ -1,3 +1,7 @@
+<% if current_user %>
+  <%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info pull-right' %>
+<% end %>
+
 <h1>Cities</h1>
 <% @cities.each do |city| %>
   <div class="col-sm-4">
@@ -6,4 +10,3 @@
   </div>
 <% end %>
 <br/>
-<%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info' %>
