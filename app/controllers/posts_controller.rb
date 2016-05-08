@@ -47,26 +47,33 @@ class PostsController < ApplicationController
   def update
     city = City.find(params[:city_id])
     post_id = params[:id]
-    post = Post.find_by(id: post_id)
+    @post = Post.find_by(id: post_id)
     user_id = current_user[:id]
-    post[:user_id] = user_id
-    if post.update(post_params)
+    @post[:user_id] = user_id
+    if session[:user_id] = @post.user_id
+      @post.update(post_params)
       flash[:notice] = "Post successfully updated!"
       redirect_to city_path(city)
     else
-      flash[:error] = post.errors.full_messages.join(", ")
+      flash[:error] = @post.errors.full_messages.join(", ")
       redirect_to edit_post_path
     end
   end
 
   def destroy
     post_id = params[:id]
-    post = Post.find_by(id: post_id)
-    post.destroy
+    @post = Post.find_by(id: post_id)
 
-    city_id = params[:city_id]
-    city = City.find_by(id: city_id)
-    redirect_to city_path(city)
+
+    if session[:user_id] = @post.user_id
+      @post.destroy
+      city_id = params[:city_id]
+      city = City.find_by(id: city_id)
+      redirect_to city_path(city)
+    else
+      flash[:notice] = "You may only delete your own posts."
+      redirect_to login_path
+    end
   end
 
   private
