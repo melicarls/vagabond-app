@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: post_id)
     user_id = current_user[:id]
     @post[:user_id] = user_id
-    if session[:user_id] = @post.user_id
+    if session[:user_id] == @post.user_id
       @post.update(post_params)
       flash[:notice] = "Post successfully updated!"
       redirect_to city_path(city)
@@ -71,7 +71,7 @@ class PostsController < ApplicationController
     post = Post.find_by(id: post_id)
 
 
-    if session[:user_id] = post.user_id
+    if session[:user_id] == post.user_id
       post.destroy
       city_id = params[:city_id]
       city = City.find_by(id: city_id)
