@@ -16,7 +16,7 @@
         <div class="col-sm-3">
           <%= image_tag("#{p.user.profile_picture}", width: "200px") %><br/>
         <small>Posted by <%= link_to p.user.username, user_path(p.user) %> <br/>
-          Date Posted: <%= p.created_at.strftime("%m/%d/%Y") %></small>
+          Posted <%= time_ago_in_words(p.created_at) %> ago</small>
         </div>
         <div class="col-sm-6 col-sm-offset-1">
           <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
