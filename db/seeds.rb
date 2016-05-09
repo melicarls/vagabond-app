@@ -3,6 +3,9 @@ require 'ffaker'
 puts "Seeding Database..."
 
 User.destroy_all
+City.destroy_all
+Post.destroy_all
+
 user_data = []
 
 10.times do
@@ -36,7 +39,7 @@ first.posts.push(the_post)
 
 puts "first user has post"
 
-User.create({
+admin = User.create({
   first_name: "admin",
   last_name: "admin",
   current_city: "admin",
@@ -59,3 +62,23 @@ City.create({name: "Cairo", photo:"https://singbiker.files.wordpress.com/2012/07
 City.create({name: "Managua", photo:"http://static.panoramio.com/photos/large/36396637.jpg"})
 City.create({name: "Austin", photo:"https://upload.wikimedia.org/wikipedia/commons/0/06/AustinSkylineLouNeffPoint-2010-03-29-b.JPG"})
 City.create({name: "São Paulo", photo:"https://www.portobay.com/media/71336/cropAlignTop-1280-800-Sao-Paulo-Altino-Arantes-Building-Jefferson-Pancieri.jpg"})
+
+cities = City.all
+
+post_data = []
+15.times do
+  post_data << Post.create({
+     title: FFaker::CheesyLingo.title,
+     content: FFaker::CheesyLingo.paragraph,
+     user_id: admin[:id]
+  })
+end
+
+cities.each do |city|
+  p "The city:", city
+  post_data.each do |post|
+    p "The post:", post
+    city.posts.push(post)
+  end
+  p "The city's posts now:", city.posts
+end
