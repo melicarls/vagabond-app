@@ -6,17 +6,7 @@ class User < ActiveRecord::Base
 
 
 
-  validates :first_name,
-            presence: true,
-            length: { maximum: 255 }
-
-
-  validates :last_name,
-            presence: true,
-            length: { maximum: 255 }
-
-
-  validates :current_city,
+  validates :first_name, :last_name, :current_city,
             presence: true,
             length: { maximum: 255 }
 
