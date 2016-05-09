@@ -1,6 +1,8 @@
+
+
 <div class="row">
   <% if current_user && current_user[:active] %>
-  <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right button' %>
+    <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right button' %>
   <% end %>
   <%= button_to "All Cities", cities_path, :method => :get, :class => 'btn btn-primary pull-right button' %>
 </div>
@@ -12,46 +14,36 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="col-sm-3">
-<<<<<<< HEAD
-          <%= image_tag("#{p.user.profile_picture}", width: "200px") %>
-          <small>Posted by
-            <%= link_to p.user.username, user_path(p.user) %>
-            <br>
-            Date Posted:
-            <%= p.created_at.strftime("%m/%d/%Y") %>
-          </small>
-=======
           <%= image_tag("#{p.user.profile_picture}", width: "200px") %><br/>
         <small>Posted by <%= link_to p.user.username, user_path(p.user) %> <br/>
           Date Posted: <%= p.created_at.strftime("%m/%d/%Y") %></small>
->>>>>>> development
         </div>
         <div class="col-sm-6 col-sm-offset-1">
-          <h3>
-            <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %>
-          </h3>
+          <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
           <p>
             <%= truncate(p.content, length:1000) {link_to "View More", city_post_path({id: p.id, city_id: @city[:id]})} %>
           </p>
         </div>
 
         <% if current_user && current_user[:id] == p[:user_id] %>
-          <div class="col-sm-2">
-            <%= button_to edit_city_post_path(@city[:id], p[:id]),
-                        :method => :get,
-                        class: "btn btn-default pull-right button"  do %>
+        <div class="col-sm-2">
+          <%= button_to edit_city_post_path(@city[:id], p[:id]),
+                    :method => :get,
+                    class: "btn btn-default pull-right button"  do %>
             <i class="fa fa-pencil" aria-hidden="true"></i>
-            <% end %>
-          </div>
-          <div class="col-sm-2">
-            <%= button_to "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => "btn btn-default pull-right button" do %>
+          <% end %>
+        </div>
+        <div class="col-sm-2">
+          <%= button_to "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => "btn btn-default pull-right button" do %>
             <i class="fa fa-trash-o" aria-hidden="true"></i>
-            <% end %>
-          </div>
+          <% end %>
+        </div>
         <% end %>
 
       </div>
+
     </div>
 
   <% end %>
+
 </div>
