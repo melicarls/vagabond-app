@@ -1,6 +1,6 @@
 require 'ffaker'
 
-puts "Seeding Database..."
+puts "Seeding Database!"
 
 User.destroy_all
 City.destroy_all
@@ -22,22 +22,9 @@ user_data = []
 end
 
 u = User.create(user_data) # array of all created users
-puts "Seeded #{u.count} Users"
+puts "Seeded #{u.count} users."
 
 puts "-----------"
-
-Post.destroy_all
-
-first = User.first
-
-the_post = Post.create ({
-   title: FFaker::CheesyLingo.title,
-   content: FFaker::CheesyLingo.paragraph
-})
-
-first.posts.push(the_post)
-
-puts "first user has post"
 
 admin = User.create({
   first_name: "admin",
@@ -49,6 +36,10 @@ admin = User.create({
   active: true,
   profile_picture: "http://www.clipartbest.com/cliparts/9cR/Rj9/9cRRj9Aoi.svg"
 })
+
+puts "Seeded the admin account with id #{admin.id}."
+
+puts "-----------"
 
 City.create({name: "San Francisco", photo:"https://images.unsplash.com/photo-1423347673683-ccdb7f6a948f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f6afff6e20e207bbe89356e92770c86a"})
 City.create({name: "Gibraltar", photo:"http://static.guim.co.uk/sys-images/Football/Clubs/Club_Home/2013/11/19/1384870207734/Gibraltar-will-play-their-014.jpg"})
@@ -65,6 +56,10 @@ City.create({name: "São Paulo", photo:"https://www.portobay.com/media/71336/cro
 
 cities = City.all
 
+puts "Seeded #{cities.count} cities."
+
+puts "-----------"
+
 cities.each do |city|
   15.times do
     city.posts.push(
@@ -76,3 +71,5 @@ cities.each do |city|
     )
   end
 end
+
+puts "All of the cities have 15 starter posts. Seeding done!"
