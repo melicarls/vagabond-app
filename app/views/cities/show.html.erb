@@ -28,10 +28,18 @@
 
         <% if current_user && current_user[:id] == p[:user_id] %>
         <div class="col-sm-2">
-          <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info pull-right button' %>
+
+          <%= button_to edit_city_post_path(@city[:id], p[:id]),
+                    :method => :get,
+                    class: "btn btn-default pull-right button"  do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+
         </div>
         <div class="col-sm-2">
-          <%= button_to "Delete", "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => 'btn btn-danger pull-right button' %>
+          <%= button_to "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => "btn btn-default pull-right button" do %>
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          <% end %>
         </div>
         <% end %>
 
