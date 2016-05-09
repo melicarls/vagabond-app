@@ -44,8 +44,42 @@
                                  asset_path('jumbotron.jpeg') %>">
    <div class="container">
        <h1><%= @city.try(:name).present? ? "#{@city.name}" : "Welcome to Vagabond" %></h1>
+       <button class="btn btn-lg btn-info">Learn More <i class="fa fa-angle-double-down" aria-hidden="true"></i></span>
+     </button>
    </div>
+
 </div>
+
+<!-- About Panel collapse -->
+<div class="row" id="about">
+  <div >
+    <h1>How it works!</h1>
+    <h4>Love travelling and would want to share your experience with others? Learn how to sign-up below!</h4>
+  </div>
+
+
+    <div class="col-sm-4">
+      <h2>Step <i class="fa fa-user-plus" aria-hidden="true"></i> </h2>
+      <h3> <%= link_to "SIGN UP!", new_user_path do %></h3>
+      <p class="lead"> Join other fellow travellers and share your experiences on different cities!</p>
+    </div>
+
+    <div class="col-sm-4">
+      <h2>Step <img src="http://s3-media1.fl.yelpcdn.com/bphoto/rdpgdletBCyrzj7cRSdbGg/o.jpg" alt="photo" class="img-rounded"></h2>
+      <h3> Look up or Add a New City! </h3>
+      <p class="lead"> Search for a city you have been to on the <%= link_to "Home", root_path %> page, or simply click on "Add New City"</p>
+    </div>
+
+    <div class="col-sm-4">
+      <h2>Step <img src="http://previews.123rf.com/images/honzahruby/honzahruby1405/honzahruby140500010/28402976-vector-modern-flat-design-hand-ok-fingers-gesture-icon-black-isolated-on-white-background-Stock-Vector.jpg" alt="photo" class="img-rounded"></h2>
+      <h3> Share your EXPERIENCE!</h3>
+      <p class="lead"> Click on any city and brag about the good(or bad) times. Changed your mind about the city? Edit or Delete your post on the city or your profile page.  </p>
+    </div>
+
+
+</div>
+
+
 
 <div class="container-fluid">
   <div class="row">

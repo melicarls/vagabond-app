@@ -62,3 +62,7 @@
  li {
    font-family: 'Francois One', sans-serif;
  }
+
+ #about {
+   border-bottom: 1px solid lightgrey;
+ }
