@@ -1,37 +1,33 @@
 <%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
 
-<fieldset>
-  <div class="col-sm-8 col-sm-offset-2">
+  <fieldset>
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="form-group">
+        <%= f.label :first_name, class: "control-label" %><br>
+        <%= f.text_field :first_name, class: "form-control", placeholder: "First name", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :last_name, class: "control-label" %><br>
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Last name", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, class: "control-label" %><br>
+        <%= f.email_field :email, class: "form-control", placeholder: "Email address", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :current_city, class: "control-label" %><br>
+        <%= f.text_field :current_city, class: "form-control", placeholder: "Current City" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :username, class: "control-label" %><br>
+        <%= f.text_field :username, class: "form-control", placeholder: "Username", required: true %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, class: "control-label" %><br>
+        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+      </div>
+      <%= f.submit "Submit", :class => 'btn btn-info' %>
+    </div>
+  </fieldset>
 
-    <div class="form-group">
-      <%= f.label :first_name, class: "control-label" %><br>
-      <%= f.text_field :first_name, class: "form-control", placeholder: "First name", required: true %>
-    </div>
-    <div class="form-group">
-      <%= f.label :last_name, class: "control-label" %><br>
-      <%= f.text_field :last_name, class: "form-control", placeholder: "Last name", required: true %>
-
-    </div>
-    <div class="form-group">
-      <%= f.label :email, class: "control-label" %><br>
-      <%= f.email_field :email, class: "form-control", placeholder: "Email address", required: true %>
-
-    </div>
-    <div class="form-group">
-      <%= f.label :username, class: "control-label" %><br>
-      <%= f.text_field :username, class: "form-control", placeholder: "Username", required: true %> 
-
-    </div>
-    <div class="form-group">
-      <%= f.label :current_city, class: "control-label" %><br>
-      <%= f.text_field :current_city, class: "form-control", placeholder: "Password" %> 
-
-    </div>
-    <div class="form-group">
-      <%= f.label :password, class: "control-label" %><br>
-      <%= f.password_field :password, class: "form-control", placeholder: "Password" %> 
-    </div>
-    <%= f.submit "Submit", :class => 'btn btn-info' %>
-  </div>
-</fieldset>
 <% end %>
