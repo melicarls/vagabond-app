@@ -1,10 +1,8 @@
 class PostsController < ApplicationController
 
+
   before_action :logged_in?, except: [:index, :show]
 
-  def index
-
-  end
 
   def new
     return if inactive_redirect
@@ -13,6 +11,7 @@ class PostsController < ApplicationController
     @city = City.find_by(id: city_id)
     render :new
   end
+
 
   def create
     return if inactive_redirect
@@ -30,6 +29,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   def show
     return if inactive_redirect
     post_id = params[:id]
@@ -37,6 +37,7 @@ class PostsController < ApplicationController
     city_id = params[:city_id]
     @city = City.find_by(id: city_id)
   end
+
 
   def edit
     return if inactive_redirect
@@ -48,6 +49,7 @@ class PostsController < ApplicationController
       redirect_to login_path
     end
   end
+
 
   def update
     return if inactive_redirect
@@ -66,11 +68,15 @@ class PostsController < ApplicationController
     end
   end
 
+
   def destroy
     return if inactive_redirect
     post_id = params[:id]
     post = Post.find_by(id: post_id)
+<<<<<<< HEAD
+=======
 
+>>>>>>> development
     if session[:user_id] == post.user_id
       post.destroy
       flash[:success] = "Your post has been deleted."
@@ -83,10 +89,13 @@ class PostsController < ApplicationController
     end
   end
 
+
   private
+
 
   def post_params
     params.require(:post).permit(:title, :content)
   end
+
 
 end

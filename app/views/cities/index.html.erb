@@ -7,11 +7,10 @@
 <div class="row">
   <div class="col-sm-6">
     <%= form_tag(root_path, :method => "get", id: "search-form", class: 'form-inline') do %>
-      <%= text_field_tag :search, params[:search], class: "form-control inline", placeholder: "Search Cities" %>
-      <%= submit_tag "Search", :name => nil, :class => 'btn btn-info'  %>
+    <%= text_field_tag :search, params[:search], class: "form-control inline", placeholder: "Search Cities" %>
+    <%= submit_tag "Search", :name => nil, :class => 'btn btn-info'  %>
     <% end %>
   </div>
-
 </div>
 <hr>
 
@@ -20,8 +19,10 @@
 <% end %>
 
 <% @cities.each do |city| %>
-  <div class="col-sm-3 city" style="background-image: url(<%= city.photo %>)">
-    <h3 class="city-name"> <%= link_to city.name, city_path(city) %> </h3>
-  </div>
+<div class="col-sm-3 city" style="background-image: url(<%= city.photo %>)">
+  <h3 class="city-name">
+    <%= link_to city.name, city_path(city) %>
+  </h3>
+</div>
 <% end %>
 <br/>
