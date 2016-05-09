@@ -6,7 +6,7 @@
 
 <div class="col-md-4">
 
-  <%= image_tag("#{@user.profile_picture}", alt: "Profile Picture") %>
+  <%= image_tag("#{@user.profile_picture}", width: "200px", alt: "Profile Picture") %>
   <h3><%= @user.username %></h3>
   <h4>Date joined: <%= @user.created_at %> </h4>
   <h4> <%= @user.current_city %> </h4>
@@ -16,20 +16,36 @@
   <% end %>
 </div>
 
-<div class="col-md-6 col-md-offset-2">
+<div class="col-md-6 col-md-offset-1">
 
   <% @user.posts.each do |post| %>
 
-  <h1>  <%= link_to post.title, city_post_path(post[:city_id], post[:id]) %></h1>
-  <p>
-    <%= post.content %>
-  </p>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h3>  <%= link_to post.title, city_post_path(post[:city_id], post[:id]) %></h3>
+      <p>
+        <%= post.content %>
+      </p>
 
-    <% if current_user && current_user[:id] == post[:user_id] %>
-      <%= button_to "Edit", edit_city_post_path(post[:city_id], post[:id]), :method => :get, :class => 'btn btn-info' %>
-      <%= button_to "Delete", "/cities/#{post[:city_id]}/posts/#{post.id}", method: :delete, :class => 'btn btn-danger' %>
-    <% end %>
+      <% if current_user && current_user[:id] == post[:user_id] %>
+        <%= button_to edit_city_post_path(post[:city_id], post[:id]),
+                  :method => :get,
+                  class: "btn btn-default pull-right button"  do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+        <%= button_to "/cities/#{post[:city_id]}/posts/#{post.id}", method: :delete, :class => "btn btn-default pull-right button" do %>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      Posted on <%= post.created_at.strftime("%m/%d/%Y") %>
+    </div>
+  </div>
+
+
 
   <% end %>
+
 
 </div>
