@@ -49,8 +49,6 @@ class CitiesController < ApplicationController
   end
 
 
-
-# Restrict to Admin account
   def edit
     return if inactive_redirect
     if @current_user[:username] != "admin"
