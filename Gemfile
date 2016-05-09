@@ -27,8 +27,6 @@ gem 'hirb'
 
 gem 'ffaker'
 
-gem 'kaminari'
-
 gem 'mail', '~> 2.6', '>= 2.6.3'
 
 gem 'figaro'
