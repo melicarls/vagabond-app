@@ -2,7 +2,7 @@
 <%= form_for [@city, @post], :html => {:class => "form-horizontal"} do |f| %>
   <fieldset>
 
-    <legend> Add a New <%= @city.name %> Post </legend>
+    <legend> Your Post About <%= @city.name %> </legend>
     <div class="col-sm-8 col-sm-offset-2">
       <div class="form-group">
         <%= f.label :title, class: "control-label" %><br>
