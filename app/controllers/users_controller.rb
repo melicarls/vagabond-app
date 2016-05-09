@@ -34,7 +34,7 @@ end
 def edit
   @user = User.find_by_id(params[:id])
   if session[:user_id] != @user[:id]
-    flash[:notice] = "You may not edit another user's profile."
+    flash[:alert] = "You may not edit another user's profile."
     render :show
   else
     render :edit
@@ -59,10 +59,10 @@ def toggle
   @user = User.find_by_id(params[:id])
   if @user.update({ active: !@user[:active] })
     if @user[:active]
-      flash[:notice] = "Welcome back! Your account has been reactivated. "
+      flash[:success] = "Welcome back! Your account has been reactivated. "
       redirect_to user_path(@user)
     else !@user[:active]
-      flash[:notice] = "Your account has been deactivated and you have been logged out."
+      flash[:alert] = "Your account has been deactivated and you have been logged out."
       logout
       redirect_to cities_path
     end
