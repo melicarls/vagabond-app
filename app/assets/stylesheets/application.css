@@ -66,7 +66,7 @@
   background-image: -moz-linear-gradient(top, #fff, #66a7b6); /* For Firefox (3.6 to 15) */
   background-image: -o-linear-gradient(top, #fff, #66a7b6); /* For old Opera (11.1 to 12.0) */
   background-image: linear-gradient(to bottom, #fff, #66a7b6); /* Standard syntax; must be last */
-  margin-top: 100px;
+  margin-top: 200px;
   padding-left: 15%;
  }
 
