@@ -65,20 +65,14 @@ City.create({name: "São Paulo", photo:"https://www.portobay.com/media/71336/cro
 
 cities = City.all
 
-post_data = []
-15.times do
-  post_data << Post.create({
-     title: FFaker::CheesyLingo.title,
-     content: FFaker::CheesyLingo.paragraph,
-     user_id: admin[:id]
-  })
-end
-
 cities.each do |city|
-  p "The city:", city
-  post_data.each do |post|
-    p "The post:", post
-    city.posts.push(post)
+  15.times do
+    city.posts.push(
+    Post.create({
+      title: city.name + "'s " + FFaker::CheesyLingo.title,
+      content: "In #{city.name}, " + FFaker::CheesyLingo.paragraph,
+      user_id: admin[:id]
+    })
+    )
   end
-  p "The city's posts now:", city.posts
 end
