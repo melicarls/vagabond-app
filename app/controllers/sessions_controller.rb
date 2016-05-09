@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
   end
 
 
-
   def create
     @user = User.confirm(user_params)
     if @user
@@ -26,7 +25,6 @@ class SessionsController < ApplicationController
   end
 
 
-
   def destroy
     logout
     flash[:success] = "Successfully logged out."
@@ -34,16 +32,12 @@ class SessionsController < ApplicationController
   end
 
 
-
-
   private
-
 
 
   def user_params
     params.require(:user).permit(:password, :username)
   end
-
 
 
 end

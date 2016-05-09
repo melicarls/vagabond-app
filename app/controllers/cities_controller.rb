@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
 
+
   def index
     return if inactive_redirect
     @cities = City.all
@@ -11,11 +12,13 @@ class CitiesController < ApplicationController
     render :index
   end
 
+
   def new
     return if inactive_redirect
     @city = City.new
     render :new
   end
+
 
   def show
     return if inactive_redirect
@@ -95,17 +98,19 @@ class CitiesController < ApplicationController
     end
   end
 
+
   def about
     render :about
     @user = User.find_by_id(params[:id])
   end
 
 
-
   private
+
 
   def city_params
     params.require(:city).permit(:name, :photo)
   end
+
 
 end
