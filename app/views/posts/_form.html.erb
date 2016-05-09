@@ -1,1 +1,20 @@
 
+<%= form_for [@city, @post], :html => {:class => "form-horizontal"} do |f| %>
+  <fieldset>
+
+    <legend> Add a New <%= @city.name %> post </legend>
+<div class="col-sm-8 col-sm-offset-2">
+  <div class="form-group">
+    <%= f.label :title, class: "control-label" %><br>
+    <%= f.text_field :title, class: "form-control", placeholder: "Title", required: true %> <br />
+  </div>
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control", placeholder: "Add stuff here", required: true %> <br />
+  </div>
+
+  <%= f.submit "Submit", class: "col-sm-3 btn btn-info pull-right" %>
+</div>
+
+
+  </fieldset>
+<% end %>
