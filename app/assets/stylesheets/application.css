@@ -20,6 +20,7 @@
 @import url(https://fonts.googleapis.com/css?family=Didact+Gothic);
 
 
+
  h1 {
    font-family: 'Francois One', sans-serif;
    text-shadow: 1px 1px grey;
@@ -72,4 +73,17 @@
 
  li {
    font-family: 'Francois One', sans-serif;
+ }
+
+#cta-button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Didact Gothic', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+
+ .about-block h3 {
+   text-align: center;
  }
