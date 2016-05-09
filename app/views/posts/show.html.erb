@@ -1,11 +1,21 @@
+<div class="col-sm-3">
+  <%= image_tag("#{@post.user.profile_picture}", width: "200px", alt: "Profile Picture")%>
+  <p> <strong>Written by:</strong> <%= link_to @post.user.username, user_path(@post.user) %></p>
+  <p> <strong>Posted at:</strong> <%= @post.created_at.strftime("%m/%d/%Y") %></p>
+</div>
+<div class="col-sm-8 col-sm-offset-1">
+  <h1><%= @post.title %></h1>
+  <p><%= @post.content %></p>
+  <% if current_user && current_user[:id] == @post[:user_id] %>
+    <%= button_to edit_city_post_path(@post[:city_id], @post[:id]),
+              :method => :get,
+              class: "btn btn-default pull-right button"  do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
 
-<h1><%= @post.title %></h1>
-<p><%= @post.content %></p>
-<img src=" <%= @post.user.profile_picture%>"/>
-<p> <strong>Written by:</strong> <%= link_to @post.user.username, user_path(@post.user) %></p>
-<p> <strong>Posted at:</strong> <%= @post.created_at.strftime("%m/%d/%Y") %></p>
+    <%= button_to "/cities/#{@post[:city_id]}/posts/#{@post.id}", method: :delete, :class => "btn btn-default pull-right button" do %>
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+    <% end %>
 
-<% if current_user && current_user[:id] == @post[:user_id] %>
-  <%= button_to "Edit", edit_city_post_path(@post[:city_id], @post[:id]), :method => :get, :class => 'btn btn-info pull-right' %>
-  <%= button_to "Delete", root_path, :class => 'btn btn-danger pull-right'  %>
-<% end %>
+  <% end %>
+</div>
