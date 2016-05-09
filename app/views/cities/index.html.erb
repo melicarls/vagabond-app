@@ -9,6 +9,8 @@
 <%= submit_tag "Search", :name => nil, :class => 'btn btn-info'  %>
 <% end %>
 
+<%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info' %>
+
 <% if @cities.blank? %>
   <h4>There are no cities containing the term <%= params[:search] %>.</h4>
 <% end %>
@@ -16,7 +18,7 @@
 <% @cities.each do |city| %>
   <div class="col-sm-4">
     <h3> <%= link_to city.name, city_path(city) %> </h3>
-    <img src="<%= city.photo %>"/>
+    <%= image_tag("#{city.photo}", width: "300px") %>
   </div>
 <% end %>
 <br/>
