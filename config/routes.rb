@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
 
   resources :cities do
-    resources :posts
+    resources :posts, :except => [:index]
   end
 
   get '*path', to: 'cities#index'
