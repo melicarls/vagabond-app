@@ -52,32 +52,44 @@
 
 <!-- About Panel collapse -->
 <div class="row" id="about">
-  <div >
-    <h1>How it works!</h1>
-    <h4>Love travelling and would want to share your experience with others? Learn how to sign-up below!</h4>
+
+  <div class="col-sm-10 col-sm-offset-1">
+    <legend>How it works...</legend>
+    <div class="col-sm-4 about-block">
+      <div class="col-sm-3 col-sm-offset-5">
+        <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-12">
+        <h3><%= link_to "Sign Up", new_user_path %></h3>
+        <p> Create an account and join other wayfaring travellers and start
+           sharing your experiences in different cities! </p>
+      </div>
+    </div>
+
+    <div class="col-sm-4 about-block">
+      <div class="col-sm-3 col-sm-offset-5">
+        <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+      </div>
+
+      <div class="col-sm-12">
+        <h3> Find a City! </h3>
+        <p> Search for a city you have been to on the
+          <%= link_to "Home", root_path %> page, or simply click on "Add New City"</p>
+      </div>
+
+    </div>
+
+    <div class="col-sm-4 about-block" >
+      <div class="col-sm-3 col-sm-offset-5">
+        <i class="fa fa-share fa-2x" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-12">
+        <h3> Share Your Stories!</h3>
+        <p> Click on any city and brag about the good(or bad) times. Changed your mind about the city? Edit or Delete your post on the city or your profile page.  </p>
+      </div>
+      <br>
+    </div>
   </div>
-
-
-    <div class="col-sm-4">
-      <h3> <%= link_to new_user_path do %>
-              Sign Up <i class="fa fa-sign-in" aria-hidden="true">
-            <% end %>
-      </h3>
-      <p class="lead"> Join other fellow travellers and share your experiences on different cities!</p>
-    </div>
-
-    <div class="col-sm-4">
-      <h2>Step <img src="http://s3-media1.fl.yelpcdn.com/bphoto/rdpgdletBCyrzj7cRSdbGg/o.jpg" alt="photo" class="img-rounded"></h2>
-      <h3> Look up or Add a New City! </h3>
-      <p class="lead"> Search for a city you have been to on the <%= link_to "Home", root_path %> page, or simply click on "Add New City"</p>
-    </div>
-
-    <div class="col-sm-4">
-      <h2>Step <img src="http://previews.123rf.com/images/honzahruby/honzahruby1405/honzahruby140500010/28402976-vector-modern-flat-design-hand-ok-fingers-gesture-icon-black-isolated-on-white-background-Stock-Vector.jpg" alt="photo" class="img-rounded"></h2>
-      <h3> Share your EXPERIENCE!</h3>
-      <p class="lead"> Click on any city and brag about the good(or bad) times. Changed your mind about the city? Edit or Delete your post on the city or your profile page.  </p>
-    </div>
-
 
 </div>
 

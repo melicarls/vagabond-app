@@ -76,4 +76,10 @@
 
  #about {
    border-bottom: 1px solid lightgrey;
+   padding-bottom: 30px;
+ }
+
+
+ .about-block h3 {
+   text-align: center;
  }
