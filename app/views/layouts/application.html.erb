@@ -59,8 +59,10 @@
 
 
     <div class="col-sm-4">
-      <h2>Step <i class="fa fa-user-plus" aria-hidden="true"></i> </h2>
-      <h3> <%= link_to "SIGN UP!", new_user_path do %></h3>
+      <h3> <%= link_to new_user_path do %>
+              Sign Up <i class="fa fa-sign-in" aria-hidden="true">
+            <% end %>
+      </h3>
       <p class="lead"> Join other fellow travellers and share your experiences on different cities!</p>
     </div>
 
