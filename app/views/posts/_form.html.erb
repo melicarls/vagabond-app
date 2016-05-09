@@ -1,7 +1,7 @@
 
 <%= form_for [@city, @post], :html => {:class => "form-horizontal"} do |f| %>
-
   <fieldset>
+
     <legend> Your Post About <%= @city.name %> </legend>
     <div class="col-sm-8 col-sm-offset-2">
       <div class="form-group">
@@ -14,6 +14,7 @@
 
       <%= f.submit "Submit", class: "col-sm-3 btn btn-info pull-right" %>
     </div>
+
+
   </fieldset>
-  
 <% end %>
