@@ -7,7 +7,6 @@
 <%= form_tag(root_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Cities" %>
 <%= submit_tag "Search", :name => nil, :class => 'btn btn-info'  %>
-<%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info' %>
 <% end %>
 
 <% if @cities.blank? %>
