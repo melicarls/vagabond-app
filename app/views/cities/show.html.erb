@@ -14,8 +14,8 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="col-sm-3">
-          <%= image_tag("#{p.user.profile_picture}", width: "200px") %>
-        <small>Posted by <%= link_to p.user.username, user_path(p.user) %> <br>
+          <%= image_tag("#{p.user.profile_picture}", width: "200px") %><br/>
+        <small>Posted by <%= link_to p.user.username, user_path(p.user) %> <br/>
           Date Posted: <%= p.created_at.strftime("%m/%d/%Y") %></small>
         </div>
         <div class="col-sm-6 col-sm-offset-1">
