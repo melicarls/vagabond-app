@@ -1,5 +1,5 @@
 <% if current_user %>
-  <%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info pull-right' %>
+  <%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-md button pull-right' %>
 <% end %>
 
 <h3>Search Cities</h3>
@@ -7,8 +7,8 @@
 <div class="row">
   <div class="col-sm-6">
     <%= form_tag(root_path, :method => "get", id: "search-form", class: 'form-inline') do %>
-      <%= text_field_tag :search, params[:search], class: "form-control inline", placeholder: "Search Cities" %>
-      <%= submit_tag "Search", :name => nil, :class => 'btn btn-info'  %>
+      <%= text_field_tag :search, params[:search], class: "form-control inline", placeholder: "Ex. San Francisco" %>
+      <%= submit_tag "Search", :name => nil, :class => 'btn btn-md button' %>
     <% end %>
   </div>
 
