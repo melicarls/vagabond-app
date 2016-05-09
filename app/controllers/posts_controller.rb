@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     user_id = current_user[:id]
     new_post[:user_id] = user_id
     if new_post.save
+      flash[:success] = "Post successfuly created!"
       city.posts << new_post
       redirect_to city_path(city)
     else
@@ -70,14 +71,14 @@ class PostsController < ApplicationController
     post_id = params[:id]
     post = Post.find_by(id: post_id)
 
-
     if session[:user_id] == post.user_id
       post.destroy
+      flash[:success] = "Your post has been deleted."
       city_id = params[:city_id]
       city = City.find_by(id: city_id)
       redirect_to city_path(city)
     else
-      flash[:notice] = "You may only delete your own posts."
+      flash[:error] = "You may only delete your own posts."
       redirect_to login_path
     end
   end
