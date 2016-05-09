@@ -32,7 +32,7 @@ class CitiesController < ApplicationController
         @active_user_posts << post
       end
     end
-    @active_user_posts.sort_by{|e| e[:created_at]}
+    @active_user_posts = @active_user_posts.sort_by{|e| e[:created_at]}.reverse!
   end
 
 

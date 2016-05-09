@@ -59,6 +59,17 @@
    font-style: italic;
  }
 
+ .footer {
+  background-color: #66a7b6;
+  background-color: #F07575; /* fallback color if gradients are not supported */
+  background-image: -webkit-linear-gradient(top, #fff, #66a7b6); /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+  background-image: -moz-linear-gradient(top, #fff, #66a7b6); /* For Firefox (3.6 to 15) */
+  background-image: -o-linear-gradient(top, #fff, #66a7b6); /* For old Opera (11.1 to 12.0) */
+  background-image: linear-gradient(to bottom, #fff, #66a7b6); /* Standard syntax; must be last */
+  margin-top: 200px;
+  padding-left: 15%;
+ }
+
  li {
    font-family: 'Francois One', sans-serif;
  }
