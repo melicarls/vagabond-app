@@ -159,11 +159,8 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   ffaker
-<<<<<<< HEAD
   figaro
-=======
   font-awesome-rails (~> 4.1.0.0)
->>>>>>> development
   hirb
   jbuilder (~> 2.0)
   jquery-rails
