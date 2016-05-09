@@ -7,9 +7,9 @@
 <div class="col-md-4">
 
   <%= image_tag("#{@user.profile_picture}", width: "200px", alt: "Profile Picture") %>
-  <h3><%= @user.username %></h3>
-  <h4>Date joined: <%= @user.created_at %> </h4>
-  <h4> <%= @user.current_city %> </h4>
+  <h3><%= @user.username.titleize %></h3>
+  <p><%= @user.created_at.strftime("Date joined: %m/%d/%Y") %> </p>
+  <p> <%= @user.current_city.upcase %> </p>
 
   <% if current_user && current_user[:id] == @user[:id] %>
     <%= button_to "Edit Profile", edit_user_path, :method => :get, :class => 'btn btn-info' %>

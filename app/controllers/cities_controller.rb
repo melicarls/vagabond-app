@@ -91,10 +91,15 @@ class CitiesController < ApplicationController
         flash[:error] = @city.errors.full_messages.join(", ")
         redirect_to edit_city_path(@city)
       end
-    else 
+    else
       redirect_to cities_path
       flash[:error] = "You're not authorized to delete a city."
     end
+  end
+
+  def about
+    render :about
+    @user = User.find_by_id(params[:id])
   end
 
 

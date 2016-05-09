@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root to: 'cities#index'
 
+  get '/cities/about', to: 'cities#about', as: 'about'
+
 # User routes
 
   get '/users/new', to: 'users#new', as: 'new_user'
