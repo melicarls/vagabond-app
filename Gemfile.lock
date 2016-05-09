@@ -56,6 +56,8 @@ GEM
     ffaker (2.2.0)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-rails (4.1.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
@@ -157,7 +159,11 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   ffaker
+<<<<<<< HEAD
   figaro
+=======
+  font-awesome-rails (~> 4.1.0.0)
+>>>>>>> development
   hirb
   jbuilder (~> 2.0)
   jquery-rails

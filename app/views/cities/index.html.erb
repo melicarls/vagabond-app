@@ -1,23 +1,26 @@
-<% if current_user %>
-  <%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info pull-right' %>
-<% end %>
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_tag(root_path, :method => "get", id: "search-form", class: 'form-inline') do %>
+      <%= text_field_tag :search, params[:search], class: "form-control inline", placeholder: "Search Cities" %>
+      <%= submit_tag "Search", :name => nil, :class => 'btn btn-info'  %>
+    <% end %>
+  </div>
+  <div class="col-sm-3 pull-right">
+    <% if current_user %>
+      <%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info pull-right' %>
+    <% end %>
+  </div>
+</div>
+<hr>
 
-<h1>Cities</h1>
-
-<%= form_tag(root_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Cities" %>
-<%= submit_tag "Search", :name => nil, :class => 'btn btn-info'  %>
-<%= button_to "Add New City", new_city_path, :method => :get, :class => 'btn btn-info' %>
-<% end %>
 
 <% if @cities.blank? %>
   <h4>There are no cities containing the term <%= params[:search] %>.</h4>
 <% end %>
 
 <% @cities.each do |city| %>
-  <div class="col-sm-4">
-    <h3> <%= link_to city.name, city_path(city) %> </h3>
-    <%= image_tag("#{city.photo}", width: "300px") %>
+  <div class="col-sm-3 city" style="background-image: url(<%= city.photo %>)">
+    <h3 class="city-name"> <%= link_to city.name, city_path(city) %> </h3>
   </div>
 <% end %>
 <br/>
