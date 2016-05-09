@@ -4,6 +4,16 @@
 
 .button {
   margin: 5px;
+  background-color: #66a7b6;
+  font-family: 'Didact Gothic', sans-serif;
+  color: white;
+  letter-spacing: 0.2em;
+}
+
+.button:hover {
+  margin: 5px;
+  background-color: #2791a9;
+  color: white;
 }
 
 
