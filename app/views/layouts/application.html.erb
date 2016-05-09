@@ -38,14 +38,23 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="jumbotron">
-  <div class="container">
-      <h1>Vagabond</h1>
-  </div>
+<div class="jumbotron"
+     style="background-image:<%= @city.try(:photo).present? ?
+                                 "url('" + @city.try(:photo) + "')" :
+                                 asset_path('jumbotron.jpeg') %>">
+   <div class="container">
+       <h1><%= @city.try(:name).present? ? "#{@city.name}" : "Vagabond" %></h1>
+   </div>
 </div>
 
-    <%= yield %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
 
+    <%= yield %>
+    </div>
+  </div>
+</div>
 
     <% flash.each do |name, msg| %>
     <p>

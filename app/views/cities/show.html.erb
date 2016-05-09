@@ -1,50 +1,44 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-
-      <div class="row">
-        <div class="col-sm-4">
-          <h1> <%= @city.name %> </h1>
-          <%= image_tag("#{@city.photo}", width: "300px") %>
-        </div>
-        <% if current_user && current_user[:active] %>
-          <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right button' %>
-        <% end %>
-        <%= button_to "All Cities", cities_path, :method => :get, :class => 'btn btn-primary pull-right button' %>
-      </div>
 
 
-      <div class="row">
-        <% @active_user_posts.reverse!.each do |p| %>
-
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="col-sm-3">
-                <%= image_tag("#{p.user.profile_picture}", width: "200px") %>
-              </div>
-              <div class="col-sm-6">
-                <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
-                <h4>
-                  <%= truncate(p.content, length:1000) {link_to "View More", city_post_path({id: p.id, city_id: @city[:id]})} %>
-                </h4>
-              </div>
-
-              <% if current_user && current_user[:id] == p[:user_id] %>
-              <div class="col-sm-3">
-                <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info pull-right button' %>
-              </div>
-              <div class="col-sm-3">
-                <%= button_to "Delete", "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => 'btn btn-danger pull-right button' %>
-              </div>
-              <% end %>
-
-            </div>
-            <div class="panel-footer">Posted by <%= link_to p.user.username, user_path(p.user) %> on <%= p.created_at.strftime("%m/%d/%Y") %></div>
-          </div>
-
-        <% end %>
-
-      </div>
-    </div>
+<div class="row">
+  <div class="col-sm-4">
+    <h1> <%= @city.name %> </h1>
   </div>
+  <% if current_user && current_user[:active] %>
+    <%= button_to "Add New Post", new_city_post_path(@city), :method => :get, :class => 'btn btn-primary pull-right button' %>
+  <% end %>
+  <%= button_to "All Cities", cities_path, :method => :get, :class => 'btn btn-primary pull-right button' %>
+</div>
+
+
+<div class="row">
+  <% @active_user_posts.reverse!.each do |p| %>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-3">
+          <%= image_tag("#{p.user.profile_picture}", width: "200px") %>
+        </div>
+        <div class="col-sm-6 col-sm-offset-1">
+          <h3> <%= link_to p.title, city_post_path({id: p.id, city_id: @city[:id]}) %> </h3>
+          <h4>
+            <%= truncate(p.content, length:1000) {link_to "View More", city_post_path({id: p.id, city_id: @city[:id]})} %>
+          </h4>
+        </div>
+
+        <% if current_user && current_user[:id] == p[:user_id] %>
+        <div class="col-sm-2">
+          <%= button_to "Edit", edit_city_post_path(@city[:id], p[:id]), :method => :get, :class => 'btn btn-info pull-right button' %>
+        </div>
+        <div class="col-sm-2">
+          <%= button_to "Delete", "/cities/#{@city.id}/posts/#{p.id}", method: :delete, :class => 'btn btn-danger pull-right button' %>
+        </div>
+        <% end %>
+
+      </div>
+      <div class="panel-footer">Posted by <%= link_to p.user.username, user_path(p.user) %> on <%= p.created_at.strftime("%m/%d/%Y") %></div>
+    </div>
+
+  <% end %>
+
 </div>
