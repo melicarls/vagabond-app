@@ -29,7 +29,7 @@ puts "-----------"
 admin = User.create({
   first_name: "admin",
   last_name: "admin",
-  current_city: "admin",
+  current_city: "Adminlandia",
   email: "admin@vagabond.com",
   username: "admin",
   password: "admin",
