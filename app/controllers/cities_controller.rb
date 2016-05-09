@@ -68,7 +68,7 @@ class CitiesController < ApplicationController
     return if inactive_redirect
     if @current_user[:username] != "admin"
       redirect_to cities_path
-      flash[:error] = "You're not authorized to edit a city."
+      flash[:alert] = "You're not authorized to edit a city."
     else
       @city = City.find_by_id(params[:id])
       if @city.update(city_params)
@@ -94,7 +94,7 @@ class CitiesController < ApplicationController
       end
     else
       redirect_to cities_path
-      flash[:error] = "You're not authorized to delete a city."
+      flash[:alert] = "You're not authorized to delete a city."
     end
   end
 

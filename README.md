@@ -1,6 +1,6 @@
 # Vagabond!
 
-*Vagabond is an app for travelers who can share their experiences for different destinations. Simply sign-up and join a community of travelers to connect and discuss cool destinations.*
+*Vagabond is an app for travelers who want to share their experiences of different destinations. Simply sign up and join a community of travelers to connect and discuss cool destinations.*
 
 [Vagabond Link](https://glacial-ridge-30784.herokuapp.com/)
 
@@ -28,26 +28,31 @@
 
 ## Existing Features
 
-* Sign-Up / Log-In
-* Activate / Deactivate users
-* Admin account that can Add/Delete cities
+* Sign Up / Log In
+* Activate / Deactivate user accounts
+* Users can add cities
+* Admin account can edit/delete cities
 * Search bar for cities
-* Users can CRUD post on different cities and on profile page
-* Deactivated users are redirected to activate page
+* Users can CRUD posts on city pages and on their own profile page
+* Deactivated users are redirected to account activation page
+* Catch-all route: any undefined routes are redirected to the homepage
+* Dynamic jumbotron: header image is replaced with a city-specific image on each city show page
+* Users receive a 'welcome' email when they create an account
 
 ## Planned Features
 
-* City Validation with Google Places
-* Pagination on city and user show page
+* City name validation with Google Places
+* Pagination for posts on city and user show page
 
 
 ## Screenshots
 
 Here is a visual on how it works:
 
-![Vagabond](/assets/images/Vagabond.png)
+![Vagabond](app/assets/images/Vagabond.png)
 
-## Test User ####or SIGN UP!
+## Test User
+###### or SIGN UP!
 
 User | Password
 --- | ---

@@ -12,6 +12,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="col-sm-3">
+<<<<<<< HEAD
           <%= image_tag("#{p.user.profile_picture}", width: "200px") %>
           <small>Posted by
             <%= link_to p.user.username, user_path(p.user) %>
@@ -19,6 +20,11 @@
             Date Posted:
             <%= p.created_at.strftime("%m/%d/%Y") %>
           </small>
+=======
+          <%= image_tag("#{p.user.profile_picture}", width: "200px") %><br/>
+        <small>Posted by <%= link_to p.user.username, user_path(p.user) %> <br/>
+          Date Posted: <%= p.created_at.strftime("%m/%d/%Y") %></small>
+>>>>>>> development
         </div>
         <div class="col-sm-6 col-sm-offset-1">
           <h3>

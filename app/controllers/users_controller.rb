@@ -23,8 +23,15 @@ class UsersController < ApplicationController
   end
 
 
+<<<<<<< HEAD
   def show
     @user = User.find_by_id(params[:id])
+=======
+def edit
+  @user = User.find_by_id(params[:id])
+  if session[:user_id] != @user[:id]
+    flash[:alert] = "You may not edit another user's profile."
+>>>>>>> development
     render :show
 
   end
@@ -40,6 +47,7 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
 
   # Once sessions are complete, verify current_user
   def update
@@ -51,6 +59,18 @@ class UsersController < ApplicationController
     else
       flash[:error] = @user.errors.full_messages.join(", ")
       redirect_to edit_user_path(@user)
+=======
+def toggle
+  @user = User.find_by_id(params[:id])
+  if @user.update({ active: !@user[:active] })
+    if @user[:active]
+      flash[:success] = "Welcome back! Your account has been reactivated. "
+      redirect_to user_path(@user)
+    else !@user[:active]
+      flash[:alert] = "Your account has been deactivated and you have been logged out."
+      logout
+      redirect_to cities_path
+>>>>>>> development
     end
   end
 
